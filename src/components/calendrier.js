@@ -1,16 +1,45 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar'
+import React, { Component } from 'react';
+import Calendar from 'react-calendar';
 
-const ReactCalendar = () => {
-    const [date, setDate] = useState(new Date());
-    const onChange = date => {
-      setDate(date);
+export default class Picker extends Component {
+
+    state = {
+        date: new Date(),
+        showDate: false,
     };
-    return (
-        <div className="calendrier">
-            <Calendar onChange={onChange} value={date} />            
-        </div>
-    );
-};
 
-export default ReactCalendar;
+    onChange = date => {
+        this.setState({
+            date: date
+        });
+    };
+
+    validation = () => {
+        this.setState({
+            showDate: true
+        });
+    };
+
+    reset = () => {
+        this.setState({
+            showDate: false
+        });
+    };
+
+    render() {
+        return (
+            <div style={{boxShadow: "5px 5px 25px"}}>
+                <div onClick={this.reset}>
+                    <Calendar onChange={this.onChange} selectRange={true} value={this.state.date}/>
+                </div>
+                <button onClick={this.validation}>Valider</button>
+                {this.state.showDate ? (
+                    <div>
+                        <p>Du : {this.state.date[0].toLocaleDateString()}</p>
+                        <p>Au : {this.state.date[1].toLocaleDateString()}</p>
+                    </div>
+                ) : null}
+            </div>
+        );
+    };
+};
