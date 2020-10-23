@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Mois from './components/section-mois.js'
+import './App.css'
+import ReactCalendar from './components/calendrier.js'
 
 export default class App extends React.Component {
   render() {
     return (
-      <h1>Hello world</h1>
+      <div>
+        <h1>"Time-Sheet"</h1>
+        <div className="div-princ">
+          <Mois />
+          <ReactCalendar />
+        </div> 
+      </div>
+       
     );
   };
 };

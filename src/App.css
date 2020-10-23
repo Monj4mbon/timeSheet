@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: black underline;
+}
+
+.div-princ {
+    display: flex;
+}
